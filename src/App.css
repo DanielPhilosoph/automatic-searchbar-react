@@ -1,0 +1,46 @@
+.dropdown {
+  display: block;
+  width: 200px;
+  background-color: rgb(202, 220, 235);
+  overflow-y: scroll;
+  max-height: 200px;
+}
+
+#search {
+  border-radius: 3px;
+  border: 2px solid gray;
+  height: 20px;
+  padding: 0 11px;
+  outline: none;
+  transition: 0.3s;
+}
+
+#search:focus {
+  border: 2px solid rgb(63, 163, 209);
+  transition: 0.3s;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.disply {
+  visibility: visible;
+}
+
+.option {
+  border: 1px solid gray;
+  cursor: pointer;
+}
+
+.option:hover {
+  box-shadow: rgb(78, 78, 78) 0.5px 2px 0.5px 0.5px;
+}
+
+.optionName {
+  display: flex;
+}
+
+.optionCode {
+  text-align: right;
+}
