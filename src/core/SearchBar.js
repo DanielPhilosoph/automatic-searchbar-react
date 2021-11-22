@@ -1,8 +1,10 @@
 import { useState, useRef } from "react";
 import OptionsDropdown from "./OptionsDropdown";
+import useCopyToClipboard from "./hooks/copyToClip";
 
 export default function SearchBar() {
   const [currentString, setCurrentString] = useState("");
+  const [isCopied, handleCopy] = useCopyToClipboard();
   const searchInput = useRef(null);
   const dropdown = useRef(null);
 
@@ -17,6 +19,15 @@ export default function SearchBar() {
     } else {
       hideDropdown();
     }
+  };
+
+  const onCopyClick = () => {
+    handleCopy(currentString);
+  };
+
+  const onClear = () => {
+    setCurrentString("");
+    searchInput.current.value = "";
   };
 
   const showDropdown = () => {
@@ -46,9 +57,9 @@ export default function SearchBar() {
         onFocus={showDropdown}
         value={currentString}
       ></input>
-      <button>clear</button>
+      <button onClick={onClear}>clear</button>
       <button onClick={toggleDropdown}>^</button>
-      <button>Copy</button>
+      <button onClick={onCopyClick}>Copy</button>
       <br />
       <div ref={dropdown} className="dropdown hidden">
         <OptionsDropdown onOptionClick={onOptionClick} query={currentString} />
